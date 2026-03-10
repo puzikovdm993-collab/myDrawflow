@@ -233,7 +233,6 @@ body {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     position: relative;
     z-index: 1;
-    touch-action: none;
 }
 
 .drawflow .drawflow-node.selected {
@@ -250,18 +249,11 @@ body {
     font-weight: 600;
     color: #333;
     cursor: move !important;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     touch-action: none;
 }
 
 .drawflow .drawflow-node .node-content {
     padding: 1rem;
-    pointer-events: none;
-    user-select: none;
-    -webkit-user-select: none;
 }
 
 .drawflow .drawflow-node .input,
@@ -275,7 +267,6 @@ body {
     cursor: crosshair;
     z-index: 2;
     position: absolute;
-    touch-action: none;
 }
 
 .drawflow .drawflow-node .input:hover,
@@ -304,14 +295,12 @@ body {
     background-size: 20px 20px;
     overflow: visible !important;
     position: relative;
-    touch-action: none;
 }
 
 /* Убедимся что parent-node не мешает взаимодействию */
 .drawflow .parent-node {
     position: absolute;
     z-index: 1;
-    touch-action: none;
 }
 
 .drawflow .parent-node.selected {
