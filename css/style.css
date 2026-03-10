@@ -2,6 +2,18 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Разрешаем выделение текста только в input и textarea */
+input, textarea, select, [contenteditable] {
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
 }
 
 body {
@@ -207,6 +219,10 @@ body {
 }
 
 /* Drawflow Custom Styles */
+.drawflow {
+    overflow: visible !important;
+}
+
 .drawflow .drawflow-node {
     background: white;
     border: 2px solid #667eea;
@@ -217,13 +233,14 @@ body {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     position: relative;
     z-index: 1;
+    touch-action: none;
 }
 
 .drawflow .drawflow-node.selected {
     background: #f0f0ff;
     border-color: #764ba2;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
-    z-index: 10;
+    z-index: 1000 !important;
 }
 
 .drawflow .drawflow-node .node-header {
@@ -237,11 +254,14 @@ body {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    touch-action: none;
 }
 
 .drawflow .drawflow-node .node-content {
     padding: 1rem;
     pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .drawflow .drawflow-node .input,
@@ -254,6 +274,8 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     cursor: crosshair;
     z-index: 2;
+    position: absolute;
+    touch-action: none;
 }
 
 .drawflow .drawflow-node .input:hover,
@@ -280,18 +302,29 @@ body {
     background-color: #ffffff;
     background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
     background-size: 20px 20px;
-    overflow: visible;
+    overflow: visible !important;
     position: relative;
+    touch-action: none;
 }
 
 /* Убедимся что parent-node не мешает взаимодействию */
 .drawflow .parent-node {
     position: absolute;
     z-index: 1;
+    touch-action: none;
 }
 
 .drawflow .parent-node.selected {
-    z-index: 100;
+    z-index: 1000 !important;
+}
+
+/* Canvas SVG должен быть ниже узлов */
+.drawflow svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: all;
 }
 
 /* Modal */
