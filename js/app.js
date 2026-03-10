@@ -34,7 +34,8 @@ function initDrawflow() {
         console.log('Узел создан:', nodeId);
         // Даем время на полную инициализацию узла в коллекции
         setTimeout(() => {
-            if (editor.nodes[nodeId]) {
+            const node = editor.getNodeFromId(nodeId);
+            if (node) {
                 updatePropertiesPanel(nodeId);
             }
         }, 10);
