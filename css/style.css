@@ -256,6 +256,15 @@ body {
 }
 
 /* Разрешаем перетаскивание для всего узла */
+.drawflow .drawflow-node {
+    cursor: grab;
+}
+
+.drawflow .drawflow-node:active {
+    cursor: grabbing;
+}
+
+/* Элементы внутри узла не должны перехватывать события перетаскивания */
 .drawflow .drawflow-node .node-header,
 .drawflow .drawflow-node .node-content {
     pointer-events: none;
