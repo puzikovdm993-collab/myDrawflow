@@ -16,6 +16,19 @@ input, textarea, select, [contenteditable] {
     -ms-user-select: text;
 }
 
+/* Разрешаем все действия для элементов Drawflow */
+.drawflow *, .drawflow-node * {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+}
+
+/* Разрешаем выделение текста в узлах Drawflow если нужно */
+.drawflow-node .node-content, .drawflow-node .node-header {
+    cursor: move;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f5f5f5;
@@ -242,18 +255,23 @@ body {
     z-index: 1000 !important;
 }
 
+/* Разрешаем перетаскивание для всего узла */
+.drawflow .drawflow-node .node-header,
+.drawflow .drawflow-node .node-content {
+    pointer-events: none;
+}
+
 .drawflow .drawflow-node .node-header {
     padding: 0.8rem 1rem;
     border-bottom: 1px solid #e0e0e0;
     border-radius: 10px 10px 0 0;
     font-weight: 600;
     color: #333;
-    cursor: move !important;
-    touch-action: none;
 }
 
 .drawflow .drawflow-node .node-content {
     padding: 1rem;
+    pointer-events: none;
 }
 
 .drawflow .drawflow-node .input,
@@ -267,6 +285,7 @@ body {
     cursor: crosshair;
     z-index: 2;
     position: absolute;
+    pointer-events: auto !important;
 }
 
 .drawflow .drawflow-node .input:hover,
