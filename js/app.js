@@ -32,7 +32,8 @@ function initDrawflow() {
     // События редактора
     editor.on('nodeCreated', (nodeId) => {
         console.log('Узел создан:', nodeId);
-        updatePropertiesPanel(nodeId);
+        // Даем время на полную инициализацию узла в коллекции
+        setTimeout(() => updatePropertiesPanel(nodeId), 0);
     });
     
     editor.on('nodeSelected', (nodeId) => {
